@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>TechBoxStore</title>
+    <link rel="stylesheet" href="style.css">
     <script>
         function changeLanguage(lang) {
             window.location.href = lang + ".html";
@@ -11,10 +12,17 @@
     </script>
 </head>
 <body>
-    <h1>Welcome to TechBoxStore</h1>
-    <p>Select your language:</p>
-    <button onclick="changeLanguage('ro')">Română</button>
-    <button onclick="changeLanguage('de')">Deutsch</button>
-    <button onclick="changeLanguage('en')">English</button>
+    <header>
+        <img src="logo.png" alt="TechBoxStore Logo" style="height:60px; vertical-align:middle;">
+        <h1 style="display:inline-block; margin-left:10px;">TechBoxStore</h1>
+    </header>
+    <main>
+        <h2>Welcome to TechBoxStore</h2>
+        <p>Select your language:</p>
+        <button onclick="changeLanguage('ro')">Română</button>
+        <button onclick="changeLanguage('de')">Deutsch</button>
+        <button onclick="changeLanguage('en')">English</button>
+    </main>
+    <footer>© 2025 TechBoxStore</footer>
 </body>
 </html>

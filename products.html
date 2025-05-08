@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products - TechBoxStore</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        let cart = [];
+
+        function addToCart(product, price) {
+            cart.push({ name: product, price: price });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById("cart-items");
+            const totalPrice = document.getElementById("cart-total");
+            const orderField = document.getElementById("order-details");
+            cartList.innerHTML = "";
+            let total = 0;
+            let orderSummary = "";
+            cart.forEach((item, index) => {
+                const li = document.createElement("li");
+                li.textContent = item.name + " - $" + item.price.toFixed(2);
+                cartList.appendChild(li);
+                total += item.price;
+                orderSummary += item.name + " - $" + item.price.toFixed(2) + "\n";
+            });
+            totalPrice.textContent = "Total: $" + total.toFixed(2);
+            orderField.value = orderSummary + "\nTotal: $" + total.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="TechBoxStore Logo" style="height:60px; vertical-align:middle;">
+        <h1 style="display:inline-block; margin-left:10px;">TechBoxStore</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <main>
+        <h2>Our Products</h2>
+        <div class="product">
+            <h3>Phone Charger</h3>
+            <p>Fast charging USB-C adapter - $14.99</p>
+            <button onclick="addToCart('Phone Charger', 14.99)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Charging Cable</h3>
+            <p>Durable nylon braided cable - $9.99</p>
+            <button onclick="addToCart('Charging Cable', 9.99)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Wireless Earbuds</h3>
+            <p>High-quality stereo sound - $29.99</p>
+            <button onclick="addToCart('Wireless Earbuds', 29.99)">Add to Cart</button>
+        </div>
+
+        <h3>Your Cart</h3>
+        <ul id="cart-items"></ul>
+        <p id="cart-total">Total: $0.00</p>
+
+        <h3>Complete Your Order</h3>
+        <form action="https://formsubmit.co/danielmiron890@gmail.com" method="POST">
+<input type="hidden" name="_next" value="https://dmiron23-star.github.io/TechBoxStore/thank-you.html">
+            <input type="text" name="name" placeholder="Your name" required><br><br>
+            <input type="email" name="email" placeholder="Your email" required><br><br>
+            <textarea id="order-details" name="order" placeholder="Order details" rows="5" readonly></textarea><br><br>
+            <button type="submit">Send Order</button>
+        </form>
+    </main>
+    <footer>© 2025 TechBoxStore</footer>
+</body>
+</html>
